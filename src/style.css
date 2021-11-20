@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+    box-sizing: border-box;
+}
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+ul,
+ol {
+    list-style: none;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+/* body {
+    background-color: #f6f8fa;
+} */
+
+.globeheader,
+.globefooter {
+    display: flex;
+    padding: 10px;
+    background-color: #24292f;
+    color: #ffffff;
+    box-shadow: 0 1rem 3rem rgb(31 45 61 / 13%);
+}
+.globeheader {
+    justify-content: space-between;
+}
+
+.globefooter {
+    justify-content: center;
+}
+.globefooter a {
+    color: #d99196;
+}
+.fixed-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.globeheader .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+.search {
+    width: 75%;
+    height: 40px;
+    margin: 75px auto;
+}
+.search #searchform {
+    font-size: inherit;
+    height: 100%;
+    display: flex;
+}
+@media (min-width: 500px) {
+    .search {
+        width: 40%;
+    }
+}
+.search #searchtext {
+    -webkit-appearance: none;
+    text-indent: 1em;
+    font-size: inherit;
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    box-shadow: 0 1rem 3rem rgb(31 45 61 / 13%);
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+    display: none;
+}
+.search button {
+    padding: 0.5em 1em;
+    border: none;
+    color: white;
+    font-size: inherit;
+    background-color: #24292f;
+    white-space: nowrap;
+    border-radius: 10%;
+    box-shadow: 0 1rem 3rem rgb(31 45 61 / 13%);
+}
+.webclt {
+    display: flex;
+    flex-flow: row wrap;
+    box-shadow: 0 1rem 3rem rgb(31 45 61 / 13%);
+    color: #24292f;
+}
+li {
+    width: 40vw;
+    height: 40vw;
+    margin: 5vw;
+    box-shadow: 0 1rem 3rem rgb(31 45 61 / 13%);
+    border-radius: 10%;
+    overflow: hidden;
+}
+.webclt li a {
+    color: #24292f;
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+.webclt .icon {
+    width: 75%;
+    height: 75%;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
