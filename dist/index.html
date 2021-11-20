@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+        <title>导航</title>
+        <link rel="stylesheet" href="/index.af814d91.css">
+        <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+        <script src="https://unpkg.com/dayjs@1.8.21/locale/zh-cn.js"></script>
+    </head>
+    <body>
+        <header class="globeheader">
+            <span id="rlTime"></span>
+            <span class="setting">
+                <svg class="icon">
+                    <use xlink:href="#icon-setting"></use>
+                </svg>
+            </span>
+        </header>
+        <div class="search">
+            <form action="https://www.baidu.com/s" method="get" id="searchform">
+                <input type="search" name="wd" id="searchtext">
+                <button type="submit">搜索</button>
+            </form>
+        </div>
+        <main>
+            <ul class="webclt">
+                <li>
+                    <a href="https://www.baidu.com">
+                        <svg class="icon">
+                            <use xlink:href="#icon-16gl-B"></use>
+                        </svg>
+                        <span>baidu.com</span>
+                    </a>
+                </li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li id="addwebclt">
+                    <a href="javascript:;">
+                        <svg class="icon">
+                            <use xlink:href="#icon-16gl-plus"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </main>
+        <footer class="globefooter">
+            <span>made with ❤️ by
+                <a href="https://github.com/rustinliu">rustin</a> 🤪</span>
+        </footer>
+        <div class="modal modaldisabled" id="addmodal">
+            <div class="cover">
+                <div class="mdialog">
+                    <span>请输入网址：</span>
+                    <input type="url" id="addweburl">
+                    <span class="btn">
+                        <button id="confirm">确定</button>
+                        <button id="cancel">取消</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script src="//at.alicdn.com/t/font_2951936_w13euynovc.js"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="/index.65c7a1e5.js"></script>
+    </body>
+</html>
