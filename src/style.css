@@ -111,6 +111,17 @@ li {
     border-radius: 10%;
     overflow: hidden;
 }
+li .close {
+    display: none;
+    position: absolute;
+    right: 3px;
+    top: 5px;
+    cursor: default;
+}
+
+li:hover .close {
+    display: block;
+}
 @media (min-width: 500px) {
     .webclt {
         margin: 0 auto;
@@ -120,6 +131,11 @@ li {
         width: 16vw;
         height: 16vw;
         margin: 2vw;
+        transition: all 0.5s;
+    }
+    li:hover {
+        transform: scale(1.1);
+        transition: all 0.5s;
     }
 }
 .webclt li a {
@@ -145,12 +161,11 @@ li {
     top: 0;
     right: 0;
     width: 100vw;
-    height: 100vh;
     background-color: rgba(0, 0, 0, 0.3);
     z-index: 9999;
 }
 .modal .mdialog {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -207,14 +222,4 @@ li {
         overflow: hidden;
         color: #24292f;
     }
-}
-li .close {
-    display: none;
-    position: absolute;
-    right: 3px;
-    top: 5px;
-    cursor: default;
-}
-li:hover .close {
-    display: block;
 }
