@@ -14,7 +14,6 @@ const simplifyUrl = (url) => {
 
 const render = () => {
     $(".webclt").find("li:not(#addwebclt)").remove();
-    console.log(1);
     hashMap.forEach((node, index) => {
         const $li = $(`
                 <li>
@@ -55,7 +54,7 @@ function footerPosition() {
     let contentHeight = document.body.scrollHeight, //网页正文全文高度
         winHeight = window.innerHeight; //可视窗口高度，不包括浏览器顶部工具栏
 
-    if (contentHeight <= winHeight - 46) {
+    if (contentHeight <= winHeight) {
         //当网页正文高度小于可视窗口高度时，为footer添加类fixed-bottom
         $(".globefooter").addClass("fixed-bottom");
     }
@@ -67,6 +66,7 @@ $("#addwebclt").on("click", function () {
     window.scroll(0, 0);
     stop();
     $("#addmodal").removeClass("modaldisabled");
+    $("#addweburl").focus();
 });
 
 $("#cancel").on("click", function () {
