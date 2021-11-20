@@ -35,6 +35,7 @@ const render = () => {
             e.stopPropagation(); // 阻止冒泡
             hashMap.splice(index, 1);
             render();
+            footerPosition();
             const string = JSON.stringify(hashMap);
             localStorage.setItem("x", string);
         });
@@ -84,6 +85,7 @@ $("#confirm").on("click", function () {
         url: url,
     });
     render();
+    footerPosition();
     const string = JSON.stringify(hashMap);
     localStorage.setItem("x", string);
     $("#cancel").click();
