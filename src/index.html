@@ -37,8 +37,16 @@
                         <span>baidu.com</span>
                     </a>
                 </li>
-                <li>
-                    <a href="">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li id="addwebclt">
+                    <a href="javascript:;">
                         <svg class="icon">
                             <use xlink:href="#icon-16gl-plus"></use>
                         </svg>
@@ -52,7 +60,19 @@
                 <a href="https://github.com/rustinliu">rustin</a> 🤪</span
             >
         </footer>
-        <script src="//at.alicdn.com/t/font_2951936_tciib2l6bq.js"></script>
+        <div class="modal modaldisabled" id="addmodal">
+            <div class="cover">
+                <div class="mdialog">
+                    <span>请输入网址：</span>
+                    <input type="url" id="addweburl" />
+                    <span class="btn">
+                        <button id="confirm">确定</button>
+                        <button id="cancel">取消</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script src="//at.alicdn.com/t/font_2951936_w13euynovc.js"></script>
         <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="main.js"></script>
     </body>
