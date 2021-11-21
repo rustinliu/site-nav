@@ -43,6 +43,11 @@ const render = () => {
                 <use xlink:href="#icon-16gl-cross"></use>
                 </svg>
                 </div>
+                <div class="mod">
+                <svg class="iconmod">
+                <use xlink:href="#icon-16gl-gear"></use>
+                </svg>
+                </div>
                 </li>
       `).insertBefore($("#addwebclt"));
         footerPosition();
@@ -54,36 +59,78 @@ const render = () => {
             const string = JSON.stringify(hashMap);
             localStorage.setItem("data", string);
         });
+        $li.on("click", ".mod", (e) => {
+            e.stopPropagation(); // 阻止冒泡
+            $(".cover").height(
+                window.innerHeight - document.body.scrollHeight >= 0
+                    ? window.innerHeight
+                    : document.body.scrollHeight
+            );
+            stop();
+            $(".mdialog").html(`<span>请输入网址：</span>
+            <input type="url" id="modweburl" />
+            <span class="btn">
+                <button id="confirmmod">修改</button>
+                <button id="cancel">取消</button>
+            </span>`);
+            $("#modweburl").val(hashMap[index].url);
+            $("#addmodal").removeClass("modaldisabled");
+            $("#modweburl").focus();
+            $("#cancel").on("click", cancelevt);
+            $("#confirmmod").on("click", { value: index }, confirmmodevt);
+        });
     });
 };
-
 render();
 
-dayjs.locale("zh-cn");
-setInterval(() => {
-    $("#rlTime").text(dayjs().format("YYYY年MM月DD日HH时mm分ss秒 dddd"));
-}, 1000);
-
-$("#addwebclt").on("click", function () {
-    //计算cover的高度
+$("#addwebclt").on("click", function (evt) {
+    evt.preventDefault();
+    //用计算得出cover的高度，避免显示BUG
     $(".cover").height(
         window.innerHeight - document.body.scrollHeight >= 0
             ? window.innerHeight
             : document.body.scrollHeight
     );
     stop();
+    $(".mdialog").html(`<span>请输入网址：</span>
+    <input type="url" id="addweburl" />
+    <span class="btn">
+        <button id="confirm">确定</button>
+        <button id="cancel">取消</button>
+    </span>`);
     $("#addmodal").removeClass("modaldisabled");
+    $("#cancel").on("click", cancelevt);
+    $("#confirm").on("click", confirmevt);
     $("#addweburl").focus();
 });
 
-$("#cancel").on("click", function () {
-    move();
-    $("#addweburl").val("");
-    $("#addmodal").addClass("modaldisabled");
-    window.scroll(0, document.body.scrollHeight);
-});
+function confirmmodevt(evt) {
+    let url = $("#modweburl").val();
+    index = evt.data.value;
+    if (url.indexOf("http") !== 0) {
+        url = "https://" + url;
+    }
+    hashMap[index].url = url;
+    hashMap[index].logo = simplifyUrl(url)[0].toUpperCase();
+    render();
+    const string = JSON.stringify(hashMap);
+    localStorage.setItem("data", string);
+    $("#cancel").click();
+}
 
-$("#confirm").on("click", function () {
+// $("#cancel").on("click", cancelevt);
+// $("#confirm").on("click", confirmevt);
+function cancelevt() {
+    move();
+    $(".mdialog").html("");
+    $("#addmodal").addClass("modaldisabled");
+    //移除事件监听
+    $("#cancel").off("click", cancelevt);
+    $("#confirm").off("click", confirmevt);
+    $("#confirmmod").off("click", confirmmodevt);
+    window.scroll(0, document.body.scrollHeight);
+}
+function confirmevt() {
     let url = $("#addweburl").val();
     if (url.indexOf("http") !== 0) {
         url = "https://" + url;
@@ -96,7 +143,8 @@ $("#confirm").on("click", function () {
     const string = JSON.stringify(hashMap);
     localStorage.setItem("data", string);
     $("#cancel").click();
-});
+}
+
 function stop() {
     let mo = function (e) {
         passive: false;
@@ -113,11 +161,18 @@ function move() {
     document.removeEventListener("touchmove", mo, false);
 }
 
-$(document).on("keypress", (e) => {
-    const { key } = e;
-    console.log(key);
-    //实现添加时回车即确认功能
+$(document).on("keyup", (evt) => {
+    const { key, keyCode } = evt;
+    //实现模态框回车即确认功能
     if (key === "Enter" && !$("#addmodal").hasClass("modaldisabled")) {
         $("#confirm").click();
+        $("#confirmmod").click();
+    } else if (keyCode === 27 && !$("#addmodal").hasClass("modaldisabled")) {
+        $("#cancel").click(); //实现模态框Esc即退出功能
     }
 });
+
+dayjs.locale("zh-cn");
+setInterval(() => {
+    $("#rlTime").text(dayjs().format("YYYY年MM月DD日HH时mm分ss秒 dddd"));
+}, 1000);

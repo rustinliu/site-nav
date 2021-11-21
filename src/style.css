@@ -21,6 +21,7 @@ a {
 }
 body {
     background-color: #f6f8fa;
+    min-width: 375px;
 }
 
 .globeheader,
@@ -111,15 +112,44 @@ li {
     border-radius: 10%;
     overflow: hidden;
 }
-li .close {
+.webclt .iconclose,
+.webclt .iconmod {
+    width: 2em;
+    height: 2em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    color: #24292f;
+}
+
+@media (min-width: 500px) {
+    .webclt .iconclose,
+    .webclt .iconclose {
+        width: 2.5em;
+        height: 2.5em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+        color: #24292f;
+    }
+}
+li .close,
+li .mod {
     display: none;
     position: absolute;
-    right: 3px;
     top: 5px;
     cursor: default;
 }
 
-li:hover .close {
+li .close {
+    right: 3px;
+}
+li .mod {
+    left: 3px;
+}
+
+li:hover .close,
+li:hover .mod {
     display: block;
 }
 @media (min-width: 500px) {
@@ -203,23 +233,4 @@ li:hover .close {
     width: 49%;
     height: 40px;
     border: none;
-}
-.webclt .iconclose {
-    width: 2em;
-    height: 2em;
-    vertical-align: -0.15em;
-    fill: currentColor;
-    overflow: hidden;
-    color: #24292f;
-}
-
-@media (min-width: 500px) {
-    .webclt .iconclose {
-        width: 2.5em;
-        height: 2.5em;
-        vertical-align: -0.15em;
-        fill: currentColor;
-        overflow: hidden;
-        color: #24292f;
-    }
 }
