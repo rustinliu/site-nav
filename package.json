@@ -1,0 +1,10 @@
+{
+    "name": "sit-navi",
+    "version": "1.0.0",
+    "repository": "git@github.com:rustinliu/site-nav.git",
+    "author": "rustin <1543153730@qq.com>",
+    "license": "MIT",
+    "scripts": {
+        "build": "rm -rf dist;parcel build  src/index.html --public-url ."
+    }
+}

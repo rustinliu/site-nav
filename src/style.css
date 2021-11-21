@@ -191,11 +191,12 @@ li:hover .mod {
     top: 0;
     right: 0;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.5);
 }
+
 .modal .mdialog {
     position: fixed;
+    z-index: 1;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
