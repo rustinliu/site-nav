@@ -15,9 +15,9 @@ $(window).resize(footerPosition);
 const data = localStorage.getItem("data");
 const xObject = JSON.parse(data);
 const hashMap = xObject || [
-    { logo: "V", url: "https://www.vuejs.org/" },
     { logo: "W", url: "https://wangdoc.com/" },
     { logo: "J", url: "https://www.jquery123.com/" },
+    { logo: "N", url: "http://nodejs.cn/" },
 ];
 const simplifyUrl = (url) => {
     return url
@@ -55,7 +55,9 @@ const render = () => {
             e.stopPropagation(); // 阻止冒泡
             hashMap.splice(index, 1);
             render();
-            window.scrollTo(e.pageX + e.clientX, e.pageY + e.clientY);
+            //删除之后还能返回原位置
+            e.pageY !== e.clientY &&
+                window.scrollTo(e.pageX + e.clientX, e.pageY + e.clientY);
             const string = JSON.stringify(hashMap);
             localStorage.setItem("data", string);
         });
@@ -125,9 +127,9 @@ function cancelevt() {
     $(".mdialog").html("");
     $("#addmodal").addClass("modaldisabled");
     //移除事件监听
-    $("#cancel").off("click", cancelevt);
-    $("#confirm").off("click", confirmevt);
-    $("#confirmmod").off("click", confirmmodevt);
+    $("#cancel") && $("#cancel").off("click", cancelevt);
+    $("#confirm") && $("#confirm").off("click", confirmevt);
+    $("#confirmmod") && $("#confirmmod").off("click", confirmmodevt);
     window.scroll(0, document.body.scrollHeight);
 }
 function confirmevt() {
@@ -173,6 +175,10 @@ $(document).on("keyup", (evt) => {
 });
 
 dayjs.locale("zh-cn");
-setInterval(() => {
-    $("#rlTime").text(dayjs().format("YYYY年MM月DD日HH时mm分ss秒 dddd"));
-}, 1000);
+const sctime = () => {
+    setTimeout(() => {
+        $("#rlTime").text(dayjs().format("YYYY年MM月DD日HH时mm分ss秒 dddd"));
+        sctime();
+    }, 500);
+};
+sctime();

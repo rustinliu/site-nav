@@ -19,9 +19,12 @@ a {
     color: inherit;
     text-decoration: none;
 }
+input,
+button {
+    font-family: inherit;
+}
 body {
     background-color: #f6f8fa;
-    min-width: 375px;
 }
 
 .globeheader,
@@ -42,6 +45,7 @@ body {
 .globefooter a {
     color: #d99196;
 }
+/*用于底栏高度处理*/
 .fixed-bottom {
     position: absolute;
     bottom: 0;
@@ -57,11 +61,13 @@ body {
     /* 功能没实现 隐藏*/
     color: #24292f;
 }
+
 .search {
     width: 75%;
     height: 40px;
     margin: 75px auto;
 }
+
 .search #searchform {
     font-size: inherit;
     height: 100%;
@@ -83,6 +89,7 @@ body {
     outline: none;
     box-shadow: 0 1rem 3rem rgb(31 45 61 / 13%);
 }
+/*去除search默认样式*/
 input::-webkit-search-decoration,
 input::-webkit-search-cancel-button {
     display: none;
@@ -137,7 +144,7 @@ li .close,
 li .mod {
     display: none;
     position: absolute;
-    top: 5px;
+    top: 3px;
     cursor: default;
 }
 
@@ -192,6 +199,7 @@ li:hover .mod {
     right: 0;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
 }
 
 .modal .mdialog {
